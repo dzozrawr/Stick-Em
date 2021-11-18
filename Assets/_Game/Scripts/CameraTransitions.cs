@@ -32,4 +32,11 @@ public class CameraTransitions : MonoBehaviour
             );
         transform.eulerAngles = currentAngle;
     }
+
+    public void transitionCameraToPhase(int i)  //i will have values from 2 to maxPhase for simplicity
+    {
+        if (i < 2) return;  //also error message should be added
+
+        currentView = views[i-2];
+    }
 }

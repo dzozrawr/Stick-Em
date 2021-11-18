@@ -16,7 +16,15 @@ public class ReplaceSticker : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             GameObject go=GameObject.FindGameObjectWithTag("StickerInPrinter");
-            gameObject.transform.position= go.transform.position;
+            GameObject copyOfThisGo = Instantiate(gameObject);
+
+            copyOfThisGo.transform.SetParent(go.transform.parent);
+
+            copyOfThisGo.transform.position= go.transform.position;
+            copyOfThisGo.transform.rotation = go.transform.rotation;
+            copyOfThisGo.transform.localScale = go.transform.localScale;
+
+            go.GetComponent<Destroyable>().selfDestruct();
         }
     }
 }
