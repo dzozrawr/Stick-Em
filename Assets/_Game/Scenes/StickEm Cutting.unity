@@ -2873,6 +2873,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9024966989513083211, guid: 964733f8cb90288499f0124f0e02ee95, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1125417
+      objectReference: {fileID: 0}
+    - target: {fileID: 9024966989513083211, guid: 964733f8cb90288499f0124f0e02ee95, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.1093469
+      objectReference: {fileID: 0}
+    - target: {fileID: 9024966989513083211, guid: 964733f8cb90288499f0124f0e02ee95, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -0.13404118
+      objectReference: {fileID: 0}
     - target: {fileID: 9024966990330853786, guid: 964733f8cb90288499f0124f0e02ee95, type: 3}
       propertyPath: m_Name
       value: StickerPhase1
@@ -2920,6 +2932,18 @@ PrefabInstance:
     - target: {fileID: 9024966990330853787, guid: 964733f8cb90288499f0124f0e02ee95, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9024966990553882625, guid: 964733f8cb90288499f0124f0e02ee95, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.108713254
+      objectReference: {fileID: 0}
+    - target: {fileID: 9024966990553882625, guid: 964733f8cb90288499f0124f0e02ee95, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.10871325
+      objectReference: {fileID: 0}
+    - target: {fileID: 9024966990553882625, guid: 964733f8cb90288499f0124f0e02ee95, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.20464182
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 964733f8cb90288499f0124f0e02ee95, type: 3}

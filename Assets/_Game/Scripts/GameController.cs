@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private GameObject phase1UI;
-    [SerializeField] private GameObject paintedSticker;
-    [SerializeField] private GameObject stickerInPrinter;
+    [SerializeField] private GameObject phase1UI, phase2UI;
+
+    [SerializeField] private GameObject paintedSticker, stickerInPrinter,stickerForPeeling;    
+
     [SerializeField] private CameraTransitions cameraTransitions;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -35,5 +38,22 @@ public class GameController : MonoBehaviour
 
         phase1UI.SetActive(false);
         cameraTransitions.transitionCameraToPhase(2);
+
+        //copy materials from phase1 to stickerForPeeling
+        Material phase1Material=  paintedSticker.transform.GetChild(1).GetComponent<Renderer>().material;       //sticker is the child at index 1, paintedSticker is the EmptyObject parent
+        stickerForPeeling.GetComponent<Renderer>().material = phase1Material;
     }
+
+    public void enablePhase2UI()
+    {
+        phase2UI.SetActive(true);
+    }
+
+    public void goToPhase3()
+    {
+        phase2UI.SetActive(false);
+        cameraTransitions.transitionCameraToPhase(3);
+    }
+
+
 }
