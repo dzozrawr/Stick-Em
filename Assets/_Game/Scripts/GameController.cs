@@ -6,6 +6,8 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private GameObject phase1UI, phase2UI;
 
+    [SerializeField] private GameObject phase1DoneButton, phase2DoneButton, phase3DoneButton, phase4DoneButton;
+
     [SerializeField] private GameObject paintedSticker, stickerInPrinter,stickerForPeeling;    
 
     [SerializeField] private CameraTransitions cameraTransitions;
@@ -40,8 +42,11 @@ public class GameController : MonoBehaviour
         cameraTransitions.transitionCameraToPhase(2);
 
         //copy materials from phase1 to stickerForPeeling
-        Material phase1Material=  paintedSticker.transform.GetChild(1).GetComponent<Renderer>().material;       //sticker is the child at index 1, paintedSticker is the EmptyObject parent
+        Material phase1Material=  paintedSticker.transform.GetChild(0).GetComponent<Renderer>().material;       //sticker is the child at index 0, paintedSticker is the EmptyObject parent
         stickerForPeeling.GetComponent<Renderer>().material = phase1Material;
+
+        //activate step 1 done
+        phase1DoneButton.SetActive(true);
     }
 
     public void enablePhase2UI()
@@ -53,6 +58,9 @@ public class GameController : MonoBehaviour
     {
         phase2UI.SetActive(false);
         cameraTransitions.transitionCameraToPhase(3);
+
+        //activate step 1 done
+        phase2DoneButton.SetActive(true);
     }
 
 
