@@ -21,4 +21,14 @@ public class AnimationEventController : MonoBehaviour
     {
         gameController.enablePhase2UI();
     }
+
+    public void enablePhase3UI()
+    {
+        gameController.enablePhase3UI();
+    }
+
+    public void enablePhase4UI()
+    {
+        gameController.enablePhase4UI();
+    }
 }
