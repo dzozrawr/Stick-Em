@@ -22,9 +22,10 @@ public class AnimationEventController : MonoBehaviour
         gameController.enablePhase2UI();
     }
 
-    public void enablePhase3UI()
+    public void enablePhase3UI()    //"next" button is removed so it should be actually called goToPhase4()
     {
-        gameController.enablePhase3UI();
+        // gameController.enablePhase3UI();
+        gameController.goToPhase4();
     }
 
     public void enablePhase4UI()

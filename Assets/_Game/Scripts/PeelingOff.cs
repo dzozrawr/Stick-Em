@@ -45,7 +45,7 @@ public class PeelingOff : MonoBehaviour
                     animPercentage = animPercentage < 0 ? 0 : animPercentage;   //negative values become zero
                     animPercentage = animPercentage > 1 ? 1 : animPercentage;   //values greater than 1 become 1
 
-                    peelOffAnim.Play("Peel Off/On", 0, animPercentage);     //playing the animation depending on the position of the finger
+                    peelOffAnim.Play("PeelOffFixed", 0, animPercentage);     //playing the animation depending on the position of the finger
                    // Debug.Log(animPercentage);
                     //peelingInitialized = true;
 

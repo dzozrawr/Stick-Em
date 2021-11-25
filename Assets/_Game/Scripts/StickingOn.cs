@@ -11,7 +11,7 @@ public class StickingOn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         peelOffAnim.speed = 0f;    //this line of code is the only difference between this script and PeelingOff script
+       // peelOffAnim.speed = 0f;    //this line of code is the only difference between this script and PeelingOff script
 
     }
 
@@ -45,7 +45,7 @@ public class StickingOn : MonoBehaviour
                     animPercentage = animPercentage < 0 ? 0 : animPercentage;   //negative values become zero
                     animPercentage = animPercentage > 1 ? 1 : animPercentage;   //values greater than 1 become 1
 
-                    peelOffAnim.Play("PeelOff", 0, animPercentage);     //playing the animation depending on the position of the finger
+                    peelOffAnim.Play("PeelOffFixedForSticking", 0, animPercentage);     //playing the animation depending on the position of the finger
                                                                             // Debug.Log(animPercentage);
                                                                             //peelingInitialized = true;
 

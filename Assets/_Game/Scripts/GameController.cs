@@ -9,11 +9,18 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private GameObject phase1DoneButton, phase2DoneButton, phase3DoneButton, phase4DoneButton;
 
-    [SerializeField] private GameObject paintedSticker, stickerInPrinter, stickerForPeeling, stickerForStickingOn;
+    [SerializeField] private GameObject paintedSticker, stickerInPrinter, stickerForPeeling, stickerForStickingOn, phoneCase;
 
     [SerializeField] private CameraTransitions cameraTransitions;
 
     [SerializeField] private Animator stickerToPeelAnimator;
+    [SerializeField] private RuntimeAnimatorController stickingOnAnimator;
+
+    private bool isGoToPhase4Active = false;
+    private Vector3 phoneCaseDestination;
+    [SerializeField] private float phoneCaseTransitionSpeed;
+
+    //[SerializeField] private Transform stickerForPeeling, phase2UI, phase3UI, phase4UI;
 
 
     // Start is called before the first frame update
@@ -25,7 +32,11 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (isGoToPhase4Active)
+        {
+            phoneCase.transform.position = Vector3.Lerp(phoneCase.transform.position, phoneCaseDestination , Time.deltaTime * phoneCaseTransitionSpeed);
+        }
+        //if goToPhase4 is activated
     }
 
     public void goToPhase2()
@@ -90,11 +101,31 @@ public class GameController : MonoBehaviour
 
     public void goToPhase4()
     {
+        /*        phase3UI.SetActive(false);
+                cameraTransitions.transitionCameraToPhase(4);
+
+                //activate step 3 done
+                phase3DoneButton.SetActive(true);*/
+
+        //disable-uj stare hitboxevime
+        //novi sticker zameni stari sticker (u kom trenutku?)
+        //phone case se lerpuje zajedno sa novim hitboxevima samo do zeljene x koordinate
+        //transform.position = Vector3.Lerp(transform.position, currentView.position, Time.deltaTime * transitionSpeed);
+
         phase3UI.SetActive(false);
-        cameraTransitions.transitionCameraToPhase(4);
 
         //activate step 3 done
         phase3DoneButton.SetActive(true);
+
+        phoneCaseDestination =new Vector3(stickerForPeeling.transform.position.x, phoneCase.transform.position.y, phoneCase.transform.position.z);
+        Transform parentPeeling= stickerForPeeling.transform.parent, parentSticking= stickerForStickingOn.transform.parent;
+        
+       // parentPeeling.GetComponent<Animator>().runtimeAnimatorController = parentSticking.GetComponent<Animator>().runtimeAnimatorController;
+       
+        parentPeeling.GetComponent<Animator>().runtimeAnimatorController = stickingOnAnimator;
+       // parentPeeling.GetComponent<Animator>().Play("PeelOffFixed", 0, 0);
+        parentPeeling.GetComponent<Animator>().speed = 0;
+        isGoToPhase4Active = true;
     }
 
     public void restartGame()
