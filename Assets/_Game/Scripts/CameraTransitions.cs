@@ -33,6 +33,11 @@ public class CameraTransitions : MonoBehaviour
         transform.eulerAngles = currentAngle;
     }
 
+    public bool cameraReachedDestination()
+    {
+        return Vector3.Distance(transform.position, currentView.position)<0.5f;
+    }
+
     public void transitionCameraToPhase(int i)  //i will have values from 2 to maxPhase for simplicity
     {
         if (i < 2) return;  //also error message should be added

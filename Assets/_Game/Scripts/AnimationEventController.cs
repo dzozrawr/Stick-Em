@@ -32,4 +32,9 @@ public class AnimationEventController : MonoBehaviour
     {
         gameController.enablePhase4UI();
     }
+
+    public void enablePhase5UI()
+    {
+        gameController.enablePhase5UI();
+    }
 }

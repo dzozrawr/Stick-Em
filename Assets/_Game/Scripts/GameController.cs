@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private GameObject phase1UI, phase2UI, phase3UI, phase4UI;
+    [SerializeField] private GameObject phase1UI, phase2UI, phase3UI, phase4UI, phase5UI;
 
     [SerializeField] private GameObject phase1DoneButton, phase2DoneButton, phase3DoneButton, phase4DoneButton;
 
-    [SerializeField] private GameObject paintedSticker, stickerInPrinter, stickerForPeeling, stickerForStickingOn, phoneCase;
+    [SerializeField] private GameObject paintedSticker, stickerInPrinter, stickerForPeeling, stickerForStickingOn, phoneCase, phoneCaseForShowing;
 
     [SerializeField] private CameraTransitions cameraTransitions;
 
@@ -19,6 +19,8 @@ public class GameController : MonoBehaviour
     private bool isGoToPhase4Active = false;
     private Vector3 phoneCaseDestination;
     [SerializeField] private float phoneCaseTransitionSpeed;
+
+    [SerializeField] private GameObject triggerForPhoneShowing;
 
     //[SerializeField] private Transform stickerForPeeling, phase2UI, phase3UI, phase4UI;
 
@@ -68,6 +70,8 @@ public class GameController : MonoBehaviour
         matArray[1] = phase1Material;
         stickerForStickingOn.GetComponent<Renderer>().materials = matArray;
 
+        phoneCaseForShowing.GetComponent<Renderer>().material = phase1Material;
+
         //activate step 1 done
         phase1DoneButton.SetActive(true);
     }
@@ -85,6 +89,11 @@ public class GameController : MonoBehaviour
     public void enablePhase4UI()
     {
         phase4UI.SetActive(true);
+    }
+
+    public void enablePhase5UI()
+    {
+        phase5UI.SetActive(true);
     }
 
     public void goToPhase3()
@@ -128,8 +137,19 @@ public class GameController : MonoBehaviour
         isGoToPhase4Active = true;
     }
 
+    public void goToPhase5()
+    {
+        triggerForPhoneShowing.SetActive(true); //trigger is set visible only here, because in phase 1 it is visible
+        phase4UI.SetActive(false);
+        cameraTransitions.transitionCameraToPhase(5);
+
+        //  SceneManager.LoadScene("StickEm");
+    }
+
     public void restartGame()
     {
         SceneManager.LoadScene("StickEm");
     }
+
+
 }
