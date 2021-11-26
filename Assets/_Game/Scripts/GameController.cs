@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private GameObject phase1DoneButton, phase2DoneButton, phase3DoneButton, phase4DoneButton;
 
-    [SerializeField] private GameObject paintedSticker, stickerInPrinter, stickerForPeeling, stickerForStickingOn, phoneCase, phoneCaseForShowing;
+    [SerializeField] private GameObject paintedSticker, stickerInPrinter, stickerForPeeling, stickerForStickingOn, phoneCase, phoneCaseForShowing, stickerForRipping1=null, stickerForRipping2 = null;  
 
     [SerializeField] private CameraTransitions cameraTransitions;
 
@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
     private Vector3 phoneCaseDestination;
     [SerializeField] private float phoneCaseTransitionSpeed;
 
-    [SerializeField] private GameObject triggerForPhoneShowing;
+    [SerializeField] private GameObject triggerForPhoneShowing, backgroundCanvas=null;
 
     //[SerializeField] private Transform stickerForPeeling, phase2UI, phase3UI, phase4UI;
 
@@ -55,6 +55,12 @@ public class GameController : MonoBehaviour
                 go.GetComponent<Destroyable>().selfDestruct();*/
 
         phase1UI.SetActive(false);
+
+        if (backgroundCanvas != null)
+        {
+            backgroundCanvas.SetActive(false);
+        }
+
         cameraTransitions.transitionCameraToPhase(2);
 
         //copy materials from phase1 to all the other stickers in other phases
@@ -64,6 +70,8 @@ public class GameController : MonoBehaviour
         matArray[1] = phase1Material;
         stickerForPeeling.GetComponent<Renderer>().materials = matArray;
 
+
+
         stickerInPrinter.GetComponent<Renderer>().material = phase1Material;
 
         matArray = stickerForStickingOn.GetComponent<Renderer>().materials;
@@ -72,8 +80,23 @@ public class GameController : MonoBehaviour
 
         phoneCaseForShowing.GetComponent<Renderer>().material = phase1Material;
 
-        //activate step 1 done
-        phase1DoneButton.SetActive(true);
+        //ripping part
+
+        if (stickerForRipping1 != null)
+        {
+            stickerForRipping1.GetComponent<Renderer>().material = phase1Material;
+        }
+
+        if (stickerForRipping2 != null)
+        {
+            matArray = stickerForRipping2.GetComponent<Renderer>().materials;
+            matArray[1] = phase1Material;
+            stickerForRipping2.GetComponent<Renderer>().materials = matArray;
+        }
+
+
+            //activate step 1 done
+            phase1DoneButton.SetActive(true);
     }
 
     public void enablePhase2UI()
