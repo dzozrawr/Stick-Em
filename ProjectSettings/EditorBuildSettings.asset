@@ -8,9 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/QuickSetupScene.unity
     guid: ece1febad9f453c4a968d044a388c5d1
-  - enabled: 0
-    path: Assets/_Game/Scenes/QuickCLIK.unity
-    guid: ffc4ec54a34c30443b56eef76054a8a1
   - enabled: 1
     path: Assets/_Game/Scenes/StickEm.unity
     guid: 67a55474c04e0d848b66e9667219a29a

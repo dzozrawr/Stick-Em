@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Tabtale.TTPlugins;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private GameObject phase1UI, phase2UI, phase3UI, phase4UI, phase5UI;
+    [SerializeField] private GameObject phase1UI, phase2Tutorial, phase2UI, phase3Tutorial, phase3UI, phase4UI, phase5UI;
 
     [SerializeField] private GameObject phase1DoneButton, phase2DoneButton, phase3DoneButton, phase4DoneButton;
 
@@ -24,6 +25,10 @@ public class GameController : MonoBehaviour
 
     //[SerializeField] private Transform stickerForPeeling, phase2UI, phase3UI, phase4UI;
 
+    private void Awake()
+    {
+        TTPCore.Setup();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -97,21 +102,30 @@ public class GameController : MonoBehaviour
 
             //activate step 1 done
             phase1DoneButton.SetActive(true);
+
+        //enable tutorial
+        phase2Tutorial.SetActive(true);
     }
 
     public void enablePhase2UI()
     {
         phase2UI.SetActive(true);
+
+        phase2Tutorial.SetActive(false); //disable phase 2 tutorial
     }
 
     public void enablePhase3UI()
     {
         phase3UI.SetActive(true);
+
     }
 
     public void enablePhase4UI()
     {
         phase4UI.SetActive(true);
+
+        //disable phase 3 tutorial
+        phase3Tutorial.SetActive(false);
     }
 
     public void enablePhase5UI()
@@ -129,6 +143,9 @@ public class GameController : MonoBehaviour
 
         //activate fall on ground animation
         stickerToPeelAnimator.SetTrigger("StickerFall");
+
+        //tutorial here
+        phase3Tutorial.SetActive(true);
     }
 
     public void goToPhase4()
@@ -158,6 +175,9 @@ public class GameController : MonoBehaviour
        // parentPeeling.GetComponent<Animator>().Play("PeelOffFixed", 0, 0);
         parentPeeling.GetComponent<Animator>().speed = 0;
         isGoToPhase4Active = true;
+
+        //tutorial disable here
+        phase3Tutorial.SetActive(false);
     }
 
     public void goToPhase5()
